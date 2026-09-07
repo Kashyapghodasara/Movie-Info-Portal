@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Contact - Cinephile's Choice</title>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <a href="index.html">
+                <img src="Images/Logo.png" alt="Cinephile's Choice Logo">
+                <h1>Cinephile's Choice</h1>
+            </a>
+
+        </div>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">Favorites</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <form class="searchbar">
+            <input type="text" placeholder="Search">
+            <input type="submit" value="Find">
+        </form>
+    </header>
+
+    <h2 class="contactHeading">Contact / Feedback Form</h2>
+
+    <main class="contactForm">
+
+        <form method="post">
+
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <br><br>
+
+            <label for="movieName">Movie Name:</label><br>
+            <input type="text" id="movieName" name="movieName" placeholder="Enter movie name" required>
+
+            <br><br>
+
+            <label for="rating">Rating:</label><br>
+            <input type="number" id="rating" name="rating" min="1" max="10" placeholder="1-10" required>
+
+            <br><br>
+
+            <label for="feedback">Message:</label><br>
+            <textarea id="feedback" name="feedback" rows="5" placeholder="Enter your feedback about the movie"
+                required></textarea>
+
+            <br><br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2024 Cinephile's Choice. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

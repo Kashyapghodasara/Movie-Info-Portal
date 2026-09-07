@@ -1,0 +1,196 @@
+* {
+    margin: 2px;
+    padding: 2px;
+    background-color: #212121;
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+header div a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+header div a {
+    text-decoration: none;
+}
+
+header div a img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+header .searchbar {
+    width: 30%;
+    gap: 20px;
+}
+header .searchbar input[type="text"] {
+    width: 65%;
+    gap: 20px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* margin: 15px auto; */
+    padding: 12px 5px;
+
+    background-color: #222;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+.navigation a {
+    color: wheat;
+    text-decoration: none;  
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+
+    transition: 0.2s ease;
+}
+
+.navigation a:hover {
+    background-color: wheat;
+    color: #222;
+}
+
+.navigation a:active {
+    transform: scale(0.96);
+}
+
+.searchbar {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.searchbar input[type="text"] {
+    padding: 10px;
+    width: 25%;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+}
+
+.searchbar input[type="submit"] {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #7cdc75;
+    background-color: #40ba38;
+}
+
+.searchbar input[type="submit"]:hover {
+    background-color: #3cab30;
+    cursor: pointer;
+}
+
+main {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.movie {
+    width: 22%;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.movie img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.movie h2 {
+    margin: 10px 0;
+    color: wheat;
+}
+
+.movie p {
+    margin: 5px;
+}
+
+.bestMovieHeading {
+    text-align: center;
+    margin: 20px 0;
+    color: wheat;
+}
+
+/* CONTACT.html */
+
+.contactHeading {
+    text-align: center;
+    margin: 20px 0;
+    color: wheat;
+}
+
+.contactForm {
+    display: flex;
+    justify-content: center;
+}
+
+.contactForm form {
+    width: 400px;
+    padding: 25px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.contactForm input,
+.contactForm textarea {
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.contactForm input {
+    width: 90%;
+}
+
+.contactForm textarea {
+    width: 90%;
+    resize: vertical;
+}
+
+.contactForm #rating {
+    width: 50%;
+}
+
+.contactForm input[type="submit"] {
+    width: auto;
+    padding: 10px 25px;
+    border: 2px solid #fbc900;
+    border-radius: 20px;
+    background-color: #c19400;
+    cursor: pointer;
+}
+
+.contactForm input[type="submit"]:hover {
+    background-color: #ffa600;
+}
