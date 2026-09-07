@@ -1,2 +1,5 @@
 # Movie-Info-Portal
-3rd Semester Project
+
+> Subject    : Web Technology <br>
+> Semester   : 3  <br>
+> Technology : HTML, CSS, JS <br>
