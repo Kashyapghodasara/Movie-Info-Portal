@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details | Cinephile's Choice</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 30px;
+            background: #151515;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .movie-details {
+            max-width: 900px;
+            margin: 30px auto;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .poster {
+            width: 280px;
+            max-width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .info h1 {
+            color: #f5c518;
+        }
+
+        .info p {
+            line-height: 1.7;
+            color: #ddd;
+        }
+
+        button,
+        .back-link {
+            display: inline-block;
+            padding: 12px 18px;
+            margin-top: 15px;
+            background: #f5c518;
+            color: #151515;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .error {
+            text-align: center;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <a href="index.html">
+                <img src="Images/Logo.png" alt="Cinephile's Choice Logo">
+                <h1>Cinephile's Choice</h1>
+            </a>
+
+        </div>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="movie_details.html">Movies</a>
+            <!-- <a href="#">Favorites</a> -->
+            <a href="contact.html">Contact</a>
+        </nav>
+        <form class="searchbar">
+            <input type="text" placeholder="Search">
+            <input type="submit" value="Find">
+        </form>
+    </header>
+
+    <main id="movie-container"></main>
+
+    <script src="movies.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const movieId = params.get("id");
+        const movie = movies[movieId];
+        const container = document.getElementById("movie-container");
+
+        if (movie) {
+            document.title = `${movie.title} | Cinephile's Choice`;
+
+            container.innerHTML = `
+                <div class="movie-details">
+                    <img
+                        class="poster"
+                        src="${moviePosters[movieId]}"
+                        alt="${movie.title} poster"
+                    >
+
+                    <section class="info">
+                        <h1>${movie.title}</h1>
+
+                        <p><strong>Year:</strong> ${movie.year}</p>
+                        <p><strong>Rating:</strong> ⭐ ${movie.rating}</p>
+                        <p><strong>Genre:</strong> ${movie.genre}</p>
+                        <p><strong>Director:</strong> ${movie.director}</p>
+                        <p><strong>Cast:</strong> ${movie.cast.join(", ")}</p>
+                        <p><strong>Duration:</strong> ${movie.duration}</p>
+
+                        <h2>Storyline</h2>
+                        <p>${movie.story}</p>
+
+                        <button onclick="history.back()">
+                            Go Back
+                        </button>
+                    </section>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="error">
+                    <h1>Movie Not Found</h1>
+                    <p>Please select a movie from our collection.</p>
+                    <a class="back-link" href="movie_details.html">
+                        Browse Movies
+                    </a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+
+</html>
