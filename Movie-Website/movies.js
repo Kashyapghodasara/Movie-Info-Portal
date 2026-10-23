@@ -222,6 +222,24 @@ const movies = {
 };
 
 
+document.getElementById("searchForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const searchValue = document.getElementById("searchInput").value.trim().toLowerCase();
+
+    // Iterate through keys
+    const movieId = Object.keys(movies).find(id =>
+        movies[id].title.toLowerCase().includes(searchValue)
+    );
+
+    if (movieId && searchValue !== "") {
+        window.location.href = `movie.html?id=${encodeURIComponent(movieId)}`;
+    } else {
+        alert("Movie not found!");
+    }
+});
+
+
 const moviePosters = {
     "inception": "Images/Inception.jpg",
     "interstellar": "Images/Intersteller.jpg",
