@@ -48,7 +48,7 @@ const movies = {
         title: "Rocky II",
         year: 1979,
         rating: "7.3/10",
-        genre: "Sports, Drama",
+        genre: "Sport, Drama",
         director: "Sylvester Stallone",
         cast: ["Sylvester Stallone", "Talia Shire", "Burgess Meredith"],
         duration: "119 minutes",
@@ -202,7 +202,7 @@ const movies = {
         title: "Bad Boys",
         year: 1995,
         rating: "7.0/10",
-        genre: "Action, Comedy, Crime",
+        genre: "Action,Comedy,Crime",
         director: "Michael Bay",
         cast: ["Will Smith", "Martin Lawrence", "Tea Leoni"],
         duration: "119 minutes",
@@ -220,24 +220,6 @@ const movies = {
         story: "A retired hitman returns to the criminal underworld after a brutal attack brings his past back into his life."
     }
 };
-
-
-document.getElementById("searchForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const searchValue = document.getElementById("searchInput").value.trim().toLowerCase();
-
-    // Iterate through keys
-    const movieId = Object.keys(movies).find(id =>
-        movies[id].title.toLowerCase().includes(searchValue)
-    );
-
-    if (movieId && searchValue !== "") {
-        window.location.href = `movie.html?id=${encodeURIComponent(movieId)}`;
-    } else {
-        alert("Movie not found!");
-    }
-});
 
 
 const moviePosters = {
@@ -262,3 +244,75 @@ const moviePosters = {
     "bad-boys": "Images/bad-boys.jpg",
     "john-wick": "Images/john-wick.jpg"
 };
+
+
+const searchForm = document.getElementById("searchForm");
+
+if (searchForm) {
+    searchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const searchValue = document
+            .getElementById("searchInput")
+            .value.trim().toLowerCase();
+
+        const movieId = Object.keys(movies).find(id =>
+            movies[id].title.toLowerCase().includes(searchValue)
+        );
+
+        if (movieId && searchValue !== "") {
+            window.location.href =
+                `movie.html?id=${encodeURIComponent(movieId)}`;
+        } else {
+            alert("Movie not found!");
+        }
+    });
+}
+
+
+
+
+const genreFilter = document.getElementById("genreFilter");
+
+const movieIdMap = {
+    devilsWearPrada: "the-devil-wears-prada",
+    rocky2: "rocky-ii",
+    diehard: "die-hard",
+    topgun: "top-gun",
+    SheepDetective: "the-sheep-detective",
+    fordvsferrari: "ford-vs-ferrari",
+    nightcrawler: "night-crawler",
+    "dead poet society": "dead-poet-society",
+    "The Meg": "the-meg",
+    "The Expendables": "the-expendables",
+    "Bad Boys": "bad-boys",
+    "John Wick": "john-wick"
+};
+
+genreFilter.addEventListener("change", function () {
+    const selectedGenre = this.value.trim().toLowerCase();
+
+    document.querySelectorAll(".movie").forEach(card => {
+        const movieId = movieIdMap[card.id] || card.id;
+        const movie = movies[movieId];
+
+        if (!movie) {
+            card.style.display = "none";
+            console.warn("Movie not found:", card.id);
+            return;
+        }
+
+        const genres = movie.genre
+            .split(",")
+            .map(genre => genre.trim().toLowerCase());
+
+        card.style.display =
+            selectedGenre === "" || genres.includes(selectedGenre)
+                ? ""
+                : "none";
+    });
+});
+
+
+
+

@@ -6,62 +6,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Details | Cinephile's Choice</title>
     <link rel="stylesheet" href="style.css">
+
     <style>
-        body {
-            margin: 0;
-            padding: 30px;
-            background: #151515;
-            color: white;
-            font-family: Arial, sans-serif;
+        /* MOVIE DETAILS PAGE */
+        #movie-container {
+            display: block;
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
         }
 
         .movie-details {
-            max-width: 900px;
-            margin: 30px auto;
             display: flex;
-            gap: 30px;
             align-items: flex-start;
-            flex-wrap: wrap;
+            gap: 35px;
+            padding: 25px;
+            background-color: #222222;
+            border: 2px solid #40383a;
+            border-radius: 12px;
         }
 
         .poster {
-            width: 280px;
-            max-width: 100%;
-            border-radius: 10px;
+            width: 300px;
+            max-width: 40%;
+            height: auto;
+            aspect-ratio: 2 / 3;
             object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
         }
 
         .info {
             flex: 1;
-            min-width: 250px;
+            min-width: 0;
+            background-color: #222222;
         }
 
         .info h1 {
-            color: #f5c518;
+            color: #e2b65d;
+            font-size: clamp(25px, 4vw, 36px);
+            margin-bottom: 18px;
+            overflow-wrap: anywhere;
+            background-color: #222222;
+        }
+
+        .info h2 {
+            color: #e2b65d;
+            margin: 22px 0 8px;
+            background-color: #222222;
         }
 
         .info p {
+            color: #c9c2bd;
             line-height: 1.7;
-            color: #ddd;
+            margin: 10px 0;
+            overflow-wrap: anywhere;
+            background-color: #222222;
         }
 
-        button,
-        .back-link {
+        .info strong {
+            color: #f5f1e8;
+            background-color: #222222;
+        }
+
+        .back-link,
+        .back-button {
             display: inline-block;
-            padding: 12px 18px;
-            margin-top: 15px;
-            background: #f5c518;
-            color: #151515;
-            border: none;
-            border-radius: 6px;
+            padding: 11px 20px;
+            margin-top: 20px;
+            background-color: #8f2633;
+            color: #ffffff;
+            border: 2px solid #a83242;
+            border-radius: 20px;
             text-decoration: none;
-            font-weight: bold;
+            font-family: inherit;
+            font-weight: 500;
             cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .back-link:hover,
+        .back-button:hover {
+            background-color: #c44252;
         }
 
         .error {
             text-align: center;
-            margin-top: 80px;
+            padding: 60px 15px;
+        }
+
+        .error h1 {
+            color: #e2b65d;
+            margin-bottom: 15px;
+        }
+
+        .error p {
+            color: #c9c2bd;
+        }
+
+        /* TABLET AND MOBILE */
+        @media (max-width: 650px) {
+            #movie-container {
+                margin: 20px auto;
+                padding: 0 12px;
+            }
+
+            .movie-details {
+                flex-direction: column;
+                align-items: center;
+                gap: 22px;
+                padding: 18px;
+            }
+
+            .poster {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .info {
+                width: 100%;
+            }
+
+            .info h1 {
+                text-align: center;
+            }
+
+            .back-button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -74,37 +146,52 @@
                 <img src="Images/Logo.png" alt="Cinephile's Choice Logo">
                 <h1>Cinephile's Choice</h1>
             </a>
-
         </div>
+
         <nav class="navigation">
             <a href="index.html">Home</a>
             <a href="movie_details.html">Movies</a>
-            <!-- <a href="#">Favorites</a> -->
             <a href="contact.html">Contact</a>
         </nav>
+
         <form class="searchbar" id="searchForm">
             <input type="text" id="searchInput" placeholder="Search">
             <input type="submit" value="Find">
         </form>
     </header>
 
+    <div class="line"></div>
+
     <main id="movie-container"></main>
 
+    <!-- Load movies.js only once -->
     <script src="movies.js"></script>
+
     <script>
         const params = new URLSearchParams(window.location.search);
         const movieId = params.get("id");
+
+        console.log("Movie ID:", movieId);
+        console.log("Movies object:", movies);
+
         const movie = movies[movieId];
+
+        console.log("Selected movie:", movie);
+
         const container = document.getElementById("movie-container");
+
+        // const movie = movies[movieId];
 
         if (movie) {
             document.title = `${movie.title} | Cinephile's Choice`;
+
+            const poster = moviePosters[movieId];
 
             container.innerHTML = `
                 <div class="movie-details">
                     <img
                         class="poster"
-                        src="${moviePosters[movieId]}"
+                        src="${poster || 'Images/Logo.png'}"
                         alt="${movie.title} poster"
                     >
 
@@ -121,7 +208,7 @@
                         <h2>Storyline</h2>
                         <p>${movie.story}</p>
 
-                        <button onclick="history.back()">
+                        <button class="back-button" onclick="history.back()">
                             Go Back
                         </button>
                     </section>
@@ -132,14 +219,13 @@
                 <div class="error">
                     <h1>Movie Not Found</h1>
                     <p>Please select a movie from our collection.</p>
-                    <a class="back-link" href="movie_details.html">
+                    <a class="back-link" href="index.html">
                         Browse Movies
                     </a>
                 </div>
             `;
         }
     </script>
-    <script src="movies.js"></script>
 
 </body>
 

@@ -1,62 +1,116 @@
+
+/* GENERAL STYLING */
 * {
-    margin: 2px;
-    padding: 2px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+}
+
+body {
     background-color: #171717;
     color: #f5f1e8;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 320px;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 /* HEADER */
-
 header {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
     width: 100%;
+    padding: 12px 20px;
+}
+
+header > div {
+    min-width: 0;
 }
 
 header div a {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    cursor: pointer;
+    gap: 10px;
     text-decoration: none;
 }
 
 header div a img {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     object-fit: cover;
     border-radius: 50%;
-    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+header div a h1 {
+    font-size: clamp(18px, 2vw, 28px);
+    color: white;
+}
+
+/* GENRE DROPDOWN */
+header select {
+    max-width: 100%;
+    padding: 10px 35px 10px 14px;
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+}
+
+header select:hover {
+    border-color: #888;
+    background-color: #292929;
+}
+
+header select:focus {
+    border-color: #aaa;
+}
+
+header select option {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
 }
 
 /* NAVIGATION */
-
 .navigation {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 15px;
-    padding: 12px 8px;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px;
     background-color: #261b1d;
     border-radius: 8px;
-    width: fit-content;
 }
 
 .navigation a {
     color: #e8d7c3;
     text-decoration: none;
     font-weight: 500;
-    padding: 8px 14px;
+    padding: 8px 12px;
     border-radius: 5px;
-    transition: 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .navigation a:hover {
     background-color: #8f2633;
-    color: #ffffff;
+    color: #fff;
 }
 
 .navigation a:active {
@@ -64,27 +118,29 @@ header div a img {
 }
 
 /* SEARCH BAR */
-
 .searchbar {
-    margin: 10px;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 8px;
+    margin: 0;
+    min-width: 0;
 }
 
 header .searchbar {
-    width: 30%;
+    flex: 1 1 220px;
+    max-width: 350px;
 }
 
 .searchbar input[type="text"] {
+    width: 100%;
+    min-width: 0;
     padding: 10px 15px;
-    width: 65%;
     border-radius: 20px;
     border: 2px solid #574b4d;
     background-color: #242424;
     color: #f5f1e8;
+    font-size: 15px;
 }
 
 .searchbar input[type="text"]::placeholder {
@@ -92,43 +148,51 @@ header .searchbar {
 }
 
 .searchbar input[type="submit"] {
-    padding: 10px 23px;
+    padding: 10px 20px;
     border-radius: 20px;
     border: 2px solid #a83242;
     background-color: #8f2633;
-    color: #ffffff;
+    color: #fff;
     font-weight: 500;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .searchbar input[type="submit"]:hover {
     background-color: #c44252;
-    color: #ffffff;
+}
+
+/* DIVIDER */
+.line {
+    border-bottom: 1px solid #40383a;
+    margin: 10px 20px;
 }
 
 /* MOVIE SECTION */
-
-main {
-    margin: 20px 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 20px;
+.bestMovieHeading {
+    text-align: center;
+    margin: 25px 12px;
+    color: #e2b65d;
+    font-size: clamp(22px, 3vw, 32px);
 }
 
-/* 4 MOVIES PER ROW */
+/* Four cards per row on desktop */
+main.mainImages {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 80px;
+    align-items: stretch;
+}
 
 .movie {
-    width: 20%;
+    min-width: 0;
     text-align: center;
     border: 2px solid #40383a;
     border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #222222;
-    transition: 0.2s ease;
+    padding: 12px;
+    background-color: #222;
+    transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .movie:hover {
@@ -138,7 +202,8 @@ main {
 
 .movie img {
     width: 100%;
-    height: 350px;
+    aspect-ratio: 2 / 3;
+    height: auto;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -146,51 +211,56 @@ main {
 .movie h2 {
     margin: 10px 0;
     color: #e2b65d;
-    background-color: #222222;
+    background-color: #222;
+    font-size: clamp(16px, 1.5vw, 21px);
+    overflow-wrap: anywhere;
 }
 
 .movie p {
-    margin: 5px;
+    margin: 8px 0;
     color: #c9c2bd;
-    background-color: #222222;
+    background-color: #222;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
-.bestMovieHeading {
-    text-align: center;
-    margin: 25px 0;
-    color: #e2b65d;
+.movie .movie-info {
+    font-size: 14px;
 }
 
 /* CONTACT PAGE */
-
 .contactHeading {
     text-align: center;
-    margin: 20px 0;
+    margin: 20px 12px;
     color: #e2b65d;
 }
 
 .contactForm {
     display: flex;
     justify-content: center;
+    padding: 15px;
 }
 
 .contactForm form {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     padding: 25px;
     border: 2px solid #40383a;
     border-radius: 10px;
     text-align: center;
-    background-color: #222222;
+    background-color: #222;
 }
 
 .contactForm input,
 .contactForm textarea {
-    padding: 8px;
+    padding: 10px;
     border: 2px solid #574b4d;
     border-radius: 8px;
-    margin-top: 5px;
+    margin-top: 8px;
     background-color: #292929;
     color: #f5f1e8;
+    font-family: inherit;
+    font-size: 16px;
 }
 
 .contactForm input {
@@ -199,6 +269,7 @@ main {
 
 .contactForm textarea {
     width: 90%;
+    max-width: 100%;
     resize: vertical;
 }
 
@@ -212,12 +283,137 @@ main {
     border: 2px solid #a83242;
     border-radius: 20px;
     background-color: #8f2633;
-    color: #ffffff;
+    color: #fff;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .contactForm input[type="submit"]:hover {
     background-color: #c44252;
 }
 
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px 12px;
+    color: #c9c2bd;
+}
+
+footer hr {
+    border: none;
+    border-top: 1px solid #40383a;
+    margin-bottom: 15px;
+}
+
+/* TABLETS: Two movie cards per row */
+@media (max-width: 900px) {
+    main.mainImages {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 15px;
+        gap: 15px;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    header .searchbar {
+        flex: 1 1 250px;
+    }
+
+    header select {
+        font-size: 14px;
+    }
+}
+
+/* MOBILE: One movie card per row */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        gap: 12px;
+    }
+
+    header > div {
+        align-self: center;
+    }
+
+    header div a img {
+        width: 60px;
+        height: 60px;
+    }
+
+    header div a h1 {
+        font-size: 21px;
+    }
+
+    .navigation {
+        width: 100%;
+        gap: 2px;
+    }
+
+    .navigation a {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    header select {
+        width: 100%;
+    }
+
+    header .searchbar {
+        width: 100%;
+        max-width: none;
+        flex: 1 1 auto;
+    }
+
+    .searchbar input[type="text"] {
+        flex: 1;
+    }
+
+    .searchbar input[type="submit"] {
+        padding: 10px 16px;
+    }
+
+    main.mainImages {
+        grid-template-columns: minmax(0, 1fr);
+        margin: 12px;
+        gap: 15px;
+    }
+
+    .movie {
+        padding: 12px;
+    }
+
+    .movie img {
+        max-height: 450px;
+    }
+
+    .movie h2 {
+        font-size: 20px;
+    }
+
+    .bestMovieHeading {
+        margin: 20px 8px;
+    }
+
+    .contactForm {
+        padding: 12px;
+    }
+
+    .contactForm form {
+        padding: 18px 10px;
+    }
+}
+
+/* Reduce animations for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
