@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        button {
+            display: inline-block;
+            padding: 12px 18px;
+            margin-top: 15px;
+            background: #f5c518;
+            color: #151515;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <a href="index.html">
+                <img src="Images/Logo.png" alt="Cinephile's Choice Logo">
+                <h1 color="white">Cinephile's Choice</h1>
+            </a>
+
+        </div>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="movie_details.html">Movies</a>
+            <a href="favorites.html">Favorites</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <select id="genreFilter">
+            <option value="">Select Genre</option>
+            <option>Action</option>
+            <option>Adventure</option>
+            <option>Biography</option>
+            <option>Comedy</option>
+            <option>Crime</option>
+            <option>Disaster</option>
+            <option>Drama</option>
+            <option>History</option>
+            <option>Horror</option>
+            <option>Mystery</option>
+            <option>Sci-Fi</option>
+            <option>Sport</option>
+            <option>Thriller</option>
+        </select>
+        <form class="searchbar" id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search">
+            <input type="submit" value="Find">
+        </form>
+
+    </header>
+
+    <div class="line"></div>
+
+
+    <h2 class="favorites-heading">❤️ MY FAVORITE MOVIES</h2>
+
+    <main class="mainImages" id="favoritesContainer"></main>
+
+    <p id="emptyMessage" style="display: none; text-align: center;">
+        No favorite movies yet! Add movies from the Movies page.
+    </p>
+
+
+    <footer>
+        <hr>
+        <p>&copy; 2026 Cinephile's Choice. All rights reserved.</p>
+    </footer>
+
+    <script src="movies.js"></script>
+    <script src="favorites.js"></script>
+
+</body>
+
+</html>

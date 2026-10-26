@@ -1,4 +1,3 @@
-
 /* GENERAL STYLING */
 * {
     margin: 0;
@@ -29,7 +28,7 @@ header {
     padding: 12px 20px;
 }
 
-header > div {
+header>div {
     min-width: 0;
 }
 
@@ -292,6 +291,26 @@ main.mainImages {
     background-color: #c44252;
 }
 
+
+.favorite-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    margin-top: 15px;
+    background: #252525;
+    color: white;
+    border: 1px solid #f5c518;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.favorite-btn:hover {
+    background: #f5c518;
+    color: #151515;
+}
+
+
 /* FOOTER */
 footer {
     text-align: center;
@@ -335,7 +354,7 @@ footer hr {
         gap: 12px;
     }
 
-    header > div {
+    header>div {
         align-self: center;
     }
 
@@ -409,6 +428,7 @@ footer hr {
 
 /* Reduce animations for users who prefer less motion */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {

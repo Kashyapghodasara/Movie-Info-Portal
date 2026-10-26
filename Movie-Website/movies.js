@@ -315,4 +315,39 @@ genreFilter.addEventListener("change", function () {
 
 
 
+const favoriteButtons = document.querySelectorAll(".favorite-btn");
 
+function getFavorites() {
+    return JSON.parse(localStorage.getItem("favorites")) || [];
+}
+
+function updateFavoriteButtons() {
+    const favorites = getFavorites();
+
+    favoriteButtons.forEach(button => {
+        const movieId = button.dataset.id;
+        const isFavorite = favorites.includes(movieId);
+
+        button.textContent = isFavorite
+            ? "❤️ Favorited"
+            : "🤍 Add to Favorites";
+    });
+}
+
+favoriteButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const movieId = button.dataset.id;
+        let favorites = getFavorites();
+
+        if (favorites.includes(movieId)) {
+            favorites = favorites.filter(id => id !== movieId);
+        } else {
+            favorites.push(movieId);
+        }
+
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        updateFavoriteButtons();
+    });
+});
+
+updateFavoriteButtons();
