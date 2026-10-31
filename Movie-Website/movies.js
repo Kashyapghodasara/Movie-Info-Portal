@@ -314,6 +314,31 @@ genreFilter.addEventListener("change", function () {
 });
 
 
+const yearFilter = document.getElementById("yearFilter");
+
+
+yearFilter.addEventListener("change", function () {
+    // Convert selectedYear to a number (if it's not an empty string)
+    const selectedYear = this.value.trim() === "" ? "" : Number(this.value.trim());
+
+    document.querySelectorAll(".movie").forEach(card => {
+        const movieId = movieIdMap[card.id] || card.id;
+        const movie = movies[movieId];
+
+        if (!movie) {
+            card.style.display = "none";
+            console.warn("Movie not found:", card.id);
+            return;
+        }
+
+        // Now both movie.year and selectedYear are numbers
+        card.style.display =
+            selectedYear === "" || movie.year === selectedYear
+                ? ""
+                : "none";
+    });
+});
+
 
 const favoriteButtons = document.querySelectorAll(".favorite-btn");
 
@@ -351,3 +376,5 @@ favoriteButtons.forEach(button => {
 });
 
 updateFavoriteButtons();
+
+
